@@ -1,12 +1,14 @@
 require 'bundler/setup'
 
-require 'simplecov'
-SimpleCov.start
-
 require 'harness'
 
 require 'minitest/unit'
-require 'minitest/autorun'
+
+require 'mutant-minitest'
+
+unless Mutant::Minitest.active?
+  require 'minitest/autorun'
+end
 
 Thread.abort_on_exception = true
 
