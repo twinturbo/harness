@@ -1,14 +1,12 @@
 require 'bundler/setup'
 
-require 'simplecov'
-SimpleCov.start
-
 require 'harness'
 
 require 'minitest/unit'
-require 'minitest/autorun'
 
-Thread.abort_on_exception = true
+require 'mutant-minitest'
+
+require 'minitest/autorun' unless Mutant::Minitest.active?
 
 class MiniTest::Unit::TestCase
   def setup
@@ -20,30 +18,35 @@ class MiniTest::Unit::TestCase
     refute_empty timers
     timer = timers.find { |t| t.name == name }
     assert timer, "Timer #{name} not logged!"
+    yield timer if block_given?
   end
 
   def assert_increment(name)
     refute_empty increments
     increment = increments.find { |i| i.name == name }
     assert increment, "Increment #{name} not logged!"
+    yield increment if block_given?
   end
 
   def assert_decrement(name)
     refute_empty decrements
     decrement = decrements.find { |i| i.name == name }
     assert decrement, "decrement #{name} not logged!"
+    yield decrement if block_given?
   end
 
   def assert_gauge(name)
     refute_empty gauges
     gauge = gauges.find { |g| g.name == name }
     assert gauge, "gauge #{name} not logged!"
+    yield gauge if block_given?
   end
 
   def assert_counter(name)
     refute_empty counters
     counter = counters.find { |g| g.name == name }
     assert counter, "counter #{name} not logged!"
+    yield counter if block_given?
   end
 
   def collector

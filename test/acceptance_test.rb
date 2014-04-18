@@ -17,4 +17,11 @@ class AcceptanceTest < MiniTest::Unit::TestCase
       true
     end
   end
+
+  def test_time_deltas_are_calculated_in_milliseconds
+    start = Time.now
+    finish = start + 2.5
+
+    assert_equal 2500, Harness.delta(start, finish)
+  end
 end
