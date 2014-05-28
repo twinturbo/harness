@@ -48,7 +48,7 @@ data on your dashboard and pay attention to it.
 
 These metrics should be enough to give you a high level overview on
 how all the different layers in your stack are performing. **Harness
-is not for drilling down into a specific request or peice of code.**
+is not for drilling down into a specific request or piece of code.**
 You should use the ruby-prof for that. In short, Harness is not a
 replacement for new-relic. They serve different purposes. However, you
 could deduce all the information newrelic provides from
