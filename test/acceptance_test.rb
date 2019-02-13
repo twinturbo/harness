@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class AcceptanceTest < MiniTest::Unit::TestCase
+class AcceptanceTest < MiniTest::Test
   def test_works_with_actual_statsd
     Harness.config.collector = Statsd.new
     Harness.config.queue = Harness::SyncQueue.new

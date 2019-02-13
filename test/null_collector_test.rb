@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class NullCollectorTest < MiniTest::Unit::TestCase
+class NullCollectorTest < MiniTest::Test
   attr_reader :statsd
 
   def setup
