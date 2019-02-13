@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class InstrumentationTest < MiniTest::Unit::TestCase
+class InstrumentationTest < MiniTest::Test
   class Worker
     include Harness::Instrumentation
   end

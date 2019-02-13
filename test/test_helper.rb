@@ -5,12 +5,12 @@ SimpleCov.start
 
 require 'harness'
 
-require 'minitest/unit'
 require 'minitest/autorun'
+require 'minitest/unit'
 
 Thread.abort_on_exception = true
 
-class MiniTest::Unit::TestCase
+class MiniTest::Test
   def setup
     Harness.config.collector = Harness::FakeCollector.new
     Harness.config.queue = Harness::SyncQueue.new
